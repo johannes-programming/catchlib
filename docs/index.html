@@ -21,7 +21,7 @@
                             <dd>
                                 <p>This class allows to catch exceptions.</p>
                                 <dl class="heading4">
-                                    <dt id="Catcher.catch">catch(*args: type[BaseException]) -> contextlib.ContextDecorator</dt>
+                                    <dt id="Catcher.catch">catch(*args: type[BaseException]) -&gt; contextlib.ContextDecorator</dt>
                                     <dd>
                                         <p>This contextmanager catches exceptions of the given types.</p>
                                     </dd>
@@ -30,6 +30,15 @@
                                         <p>This property stores the caught exception.</p>
                                     </dd>
                                 </dl>
+                            </dd>
+                            <dt>
+                                <ul>
+                                    <li><code><b>release</b><em>(</em><i>exc: BaseException</i><em>)</em> <i>-&gt; None</i></code></li>
+                                    <li><code><b>release</b><em>(</em><i>exc: BaseException</i>, <i>cause: Optional[BaseException]</i><em>)</em> <i>-&gt; None</i></code></li>
+                                </ul>
+                            </dt>
+                            <dd>
+                                This method raises and deletes the <a href="#Catcher.caught"><code>caught</code></a> exception.
                             </dd>
                         </dl>
                     </dd>
