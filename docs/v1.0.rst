@@ -1,0 +1,70 @@
+Introduction
+------------
+
+This project allows to catch exceptions easily.
+
+Installation
+------------
+
+To install ``catchlib``, you can use ``pip``.
+Open your terminal and run:
+
+.. code-block:: shell
+
+    pip install catchlib
+
+Features
+--------
+
+``class catchlib.Catcher()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This class allows to catch exceptions.
+
+``catch(*args: type[BaseException]) -> contextlib.ContextDecorator``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This contextmanager catches exceptions of the given types.
+
+``caught: Optional[BaseException] = None``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This property stores the caught exception.
+
+``release() -> None`` ``release(cause: Optional[BaseException]) -> None``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method raises and deletes the ``caught`` exception.
+
+``catchlib.tests.test() -> unittest.TextTestResult``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This project can be tested through its test function.
+
+.. code-block:: python
+
+    import catchlib.tests
+    catchlib.tests.test()
+
+License
+-------
+
+This project is licensed under the MIT License.
+
+Links
+-----
+
+- Download: https://pypi.org/project/catchlib/#files
+- Index: https://pypi.org/project/catchlib/
+- Source: https://github.com/johannes-programming/catchlib/
+- Website: https://catchlib.johannes-programming.online/
+
+Impressum
+---------
+
+**Johannes Programming**
+
+- Name: Johannes
+- Email: johannes.programming@gmail.com
+- Homepage: https://www.johannes-programming.online/
+- Gravatar: https://www.johannes-programming.fyi/
