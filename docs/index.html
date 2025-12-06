@@ -5,7 +5,16 @@
     </head>
     <body>
         <dl id="top" class="heading0">
-            <dt><a>catchlib</a></dt>
+            <dt>
+                <a>catchlib</a>
+                <p>
+                    Version:
+                    <select id="version">
+                        <option>1.0.0</option>
+                        <option selected>1.0.1</option>
+                    </select>
+                </p>
+            </dt>
             <dd>
                 <dl class="heading1">
                     <dt id="intro">Introduction</dt>
@@ -29,13 +38,13 @@
                                     <dd>
                                         <p>This property stores the caught exception.</p>
                                     </dd>
-                                    <dt>
+                                    <dt version="1.0.1">
                                         <ul>
                                             <li><code><b>release</b><em>(</em><i>exc: BaseException</i><em>)</em> <i>-&gt; None</i></code></li>
                                             <li><code><b>release</b><em>(</em><i>exc: BaseException</i>, <i>cause: Optional[BaseException]</i><em>)</em> <i>-&gt; None</i></code></li>
                                         </ul>
                                     </dt>
-                                    <dd>
+                                    <dd version="1.0.1">
                                         This method raises and deletes the <a href="#Catcher.caught"><code>caught</code></a> exception.
                                     </dd>
                                 </dl>
