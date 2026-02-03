@@ -3,6 +3,8 @@ from typing import *
 
 from catchlib.core import Catcher
 
+__all__ = ["TestCatcher"]
+
 
 class TestCatcher(unittest.TestCase):
     def test_captures_matching_exception(self: Self) -> None:
