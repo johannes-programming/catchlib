@@ -6,7 +6,8 @@ from catchlib.core import Catcher
 
 class TestCatcher(unittest.TestCase):
     def test_captures_matching_exception(self: Self) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
         with catcher.catch(ValueError):
             raise ValueError("bad value")
         self.assertIsNotNone(catcher.caught)
@@ -14,13 +15,15 @@ class TestCatcher(unittest.TestCase):
         self.assertEqual(str(catcher.caught), "bad value")
 
     def test_no_exception_leaves_caught_none(self: Self) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
         with catcher.catch(ValueError):
             pass
         self.assertIsNone(catcher.caught)
 
     def test_captures_one_of_multiple_types(self: Self) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
         with catcher.catch(ValueError, KeyError):
             raise KeyError("missing")
         self.assertIsNotNone(catcher.caught)
@@ -32,7 +35,8 @@ class TestCatcher(unittest.TestCase):
     def test_non_matching_exception_propagates_and_does_not_set_caught(
         self: Self,
     ) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
         with self.assertRaises(ZeroDivisionError):
             with catcher.catch(ValueError, KeyError):
                 1 / 0  # ZeroDivisionError not in capture set
@@ -40,7 +44,8 @@ class TestCatcher(unittest.TestCase):
         self.assertIsNone(catcher.caught)
 
     def test_reuse_and_reset_semantics(self: Self) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
 
         # First, capture an exception
         with catcher.catch(RuntimeError):
@@ -58,7 +63,8 @@ class TestCatcher(unittest.TestCase):
         self.assertIsInstance(catcher.caught, TypeError)
 
     def test_empty_type_tuple_never_catches(self: Self) -> None:
-        catcher: Catcher = Catcher()
+        catcher: Catcher
+        catcher = Catcher()
         # Passing no types should behave like catching nothing: exception propagates
         with self.assertRaises(ValueError):
             with catcher.catch():
