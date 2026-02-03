@@ -20,8 +20,8 @@ class Catcher:
     @contextmanager
     def catch(self: Self, *args: type[BaseException]) -> Generator[Self, None, None]:
         "This contextmanager catches exceptions."
-        self._caught = None
         exc: BaseException
+        self._caught = None
         try:
             yield self
         except args as exc:
@@ -40,7 +40,8 @@ class Catcher:
     @release.overload(False)
     def release(self: Self) -> None:
         "This method raises the caught exception."
-        exc: BaseException = self.caught
+        exc: BaseException
+        exc = self.caught
         self._caught = None
         if exc is not None:
             raise exc
@@ -48,7 +49,8 @@ class Catcher:
     @release.overload(True)
     def release(self: Self, cause: Optional[BaseException]) -> None:
         "This method raises the caught exception."
-        exc: BaseException = self.caught
+        exc: BaseException
+        exc = self.caught
         self._caught = None
         if exc is not None:
             raise exc from cause
