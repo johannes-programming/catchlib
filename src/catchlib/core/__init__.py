@@ -7,7 +7,6 @@ __all__ = ["Catcher"]
 
 
 class Catcher:
-
     "This class catches exceptions."
 
     __slots__ = ("_caught",)
