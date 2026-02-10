@@ -1,9 +1,9 @@
 from contextlib import contextmanager
 from typing import *
 
-from overloadable import Overloadable
-
 __all__ = ["Catcher"]
+
+DEFAULT = object()
 
 
 class Catcher:
@@ -32,25 +32,23 @@ class Catcher:
         "This property stores the caught exception."
         return self._caught
 
-    @Overloadable
-    def release(self: Self, *args: Any, **kwargs: Any) -> bool:
-        "This method raises the caught exception."
-        return bool(len(args) + len(kwargs))
+    @overload
+    def release(self: Self) -> None: ...
 
-    @release.overload(False)
-    def release(self: Self) -> None:
+    @overload
+    def release(self: Self, cause: Optional[BaseException]) -> None: ...
+
+    def release(
+        self: Self,
+        cause: BaseException | None | object = DEFAULT,
+    ) -> None:
         "This method raises the caught exception."
         exc: BaseException
         exc = self.caught
         self._caught = None
-        if exc is not None:
+        if exc is None:
+            return
+        if cause is DEFAULT:
             raise exc
-
-    @release.overload(True)
-    def release(self: Self, cause: Optional[BaseException]) -> None:
-        "This method raises the caught exception."
-        exc: BaseException
-        exc = self.caught
-        self._caught = None
-        if exc is not None:
+        else:
             raise exc from cause
