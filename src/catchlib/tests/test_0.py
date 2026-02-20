@@ -31,7 +31,8 @@ class TestCatcher(unittest.TestCase):
         self.assertIsNotNone(catcher.caught)
         self.assertIsInstance(catcher.caught, KeyError)
         self.assertEqual(
-            str(catcher.caught), "'missing'"
+            str(catcher.caught),
+            "'missing'",
         )  # KeyError stringifies with quotes
 
     def test_non_matching_exception_propagates_and_does_not_set_caught(
