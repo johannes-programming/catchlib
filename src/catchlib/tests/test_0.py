@@ -1,7 +1,7 @@
 import unittest
 from typing import *
 
-from catchlib.core import Catcher
+from catchlib.core.Catcher import Catcher
 
 __all__ = ["TestCatcher"]
 

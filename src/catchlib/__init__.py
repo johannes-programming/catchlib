@@ -1,2 +1,1 @@
-from catchlib.core import *
-from catchlib.tests import *
+from catchlib.core.Catcher import Catcher
