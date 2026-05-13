@@ -3,6 +3,10 @@ Introduction
 
 This project allows to catch exceptions easily.
 
+.. container:: warning
+
+    **Warning:** The minor version ``1.0`` of ``catchlib`` has reached end-of-life.
+
 Installation
 ------------
 
