@@ -1,10 +1,12 @@
-import unittest
+"""Provide the test runner for catchlib."""
 
-__all__ = ["test"]
+__all__: list[str] = ["test"]
+
+import unittest
 
 
 def test() -> unittest.TextTestResult:
-    "This function runs all the tests."
+    """Run all the tests."""
     loader: unittest.TestLoader
     suite: unittest.TestSuite
     loader = unittest.TestLoader()
