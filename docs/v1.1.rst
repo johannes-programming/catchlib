@@ -35,13 +35,13 @@ This class allows to catch exceptions.
 
 This contextmanager catches exceptions of the given types.
 
-``caught: Optional[BaseException] = None``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``caught: BaseException | None = None``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This property stores the caught exception.
 
-``release() -> None`` ``release(cause: Optional[BaseException]) -> None``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``release() -> None`` ``release(cause: BaseException | None) -> None``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This method raises and deletes the ``caught`` exception.
 

@@ -11,7 +11,7 @@ from catchlib.core.Catcher import Catcher
 class TestCatcher(unittest.TestCase):
     """Test the Catcher class."""
 
-    def test_captures_matching_exception(self: Self) -> None:
+    def test_captures_matching_exception(self: Self, /) -> None:
         """Capture a matching exception type."""
         catcher: Catcher
         catcher = Catcher()
@@ -21,7 +21,7 @@ class TestCatcher(unittest.TestCase):
         self.assertIsInstance(catcher.caught, ValueError)
         self.assertEqual(str(catcher.caught), "bad value")
 
-    def test_no_exception_leaves_caught_none(self: Self) -> None:
+    def test_no_exception_leaves_caught_none(self: Self, /) -> None:
         """Leave caught as None when no exception occurs."""
         catcher: Catcher
         catcher = Catcher()
@@ -29,7 +29,7 @@ class TestCatcher(unittest.TestCase):
             pass
         self.assertIsNone(catcher.caught)
 
-    def test_captures_one_of_multiple_types(self: Self) -> None:
+    def test_captures_one_of_multiple_types(self: Self, /) -> None:
         """Capture one of several specified exception types."""
         catcher: Catcher
         catcher = Catcher()
@@ -44,6 +44,7 @@ class TestCatcher(unittest.TestCase):
 
     def test_non_matching_exception_propagates_and_does_not_set_caught(
         self: Self,
+        /,
     ) -> None:
         """Propagate non-matching exception and leave caught unset."""
         catcher: Catcher
@@ -54,7 +55,7 @@ class TestCatcher(unittest.TestCase):
         # Since the exception propagated out, Catcher should not have recorded anything
         self.assertIsNone(catcher.caught)
 
-    def test_reuse_and_reset_semantics(self: Self) -> None:
+    def test_reuse_and_reset_semantics(self: Self, /) -> None:
         """Verify reuse of catcher and reset of caught state."""
         catcher: Catcher
         catcher = Catcher()
@@ -74,7 +75,7 @@ class TestCatcher(unittest.TestCase):
             raise TypeError("second")
         self.assertIsInstance(catcher.caught, TypeError)
 
-    def test_empty_type_tuple_never_catches(self: Self) -> None:
+    def test_empty_type_tuple_never_catches(self: Self, /) -> None:
         """Never catch when no exception types are specified."""
         catcher: Catcher
         catcher = Catcher()

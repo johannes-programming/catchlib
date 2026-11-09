@@ -7,7 +7,7 @@ __all__: list[str] = ["Catcher"]
 import enum
 from collections.abc import Generator
 from contextlib import contextmanager
-from typing import Optional, Self, overload
+from typing import Self, overload
 
 
 class Missing(enum.Enum):
@@ -21,15 +21,15 @@ class Catcher:
 
     __slots__ = ("_caught",)
 
-    _caught: Optional[BaseException]
+    _caught: BaseException | None
 
-    def __init__(self: Self) -> None:
+    def __init__(self: Self, /) -> None:
         """Initialize the catcher."""
         self._caught = None
 
     @contextmanager
     def catch(
-        self: Self, *args: type[BaseException]
+        self: Self, /, *args: type[BaseException]
     ) -> Generator[Self, None, None]:
         """Catch exceptions of the given types."""
         exc: BaseException
@@ -40,22 +40,23 @@ class Catcher:
             self._caught = exc
 
     @property
-    def caught(self: Self) -> Optional[BaseException]:
+    def caught(self: Self, /) -> BaseException | None:
         """Return the caught exception."""
         return self._caught
 
     @overload
-    def release(self: Self) -> None: ...
+    def release(self: Self, /) -> None: ...
 
     @overload
-    def release(self: Self, cause: Optional[BaseException]) -> None: ...
+    def release(self: Self, /, cause: BaseException | None) -> None: ...
 
     def release(
         self: Self,
-        cause: Optional[BaseException] | Missing = Missing.missing,
+        /,
+        cause: BaseException | Missing | None = Missing.missing,
     ) -> None:
         """Raise and clear the caught exception."""
-        exc: Optional[BaseException]
+        exc: BaseException | None
         exc = self.caught
         self._caught = None
         if exc is None:
