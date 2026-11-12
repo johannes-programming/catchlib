@@ -32,7 +32,6 @@ class Catcher:
         self: Self, /, *args: type[BaseException]
     ) -> Generator[Self, None, None]:
         """Catch exceptions of the given types."""
-        exc: BaseException
         self._caught = None
         try:
             yield self
